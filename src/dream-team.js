@@ -21,7 +21,7 @@ function createDreamTeam(members) {
     var arr = [];
     var allMembers = members.filter(function(el){return typeof(el) === "string"});
   
-    console.debug(allMembers);
+    //console.debug(allMembers);
   
     for (let i = 0; i < allMembers.length; i++) {
       let arrMember = [];
@@ -31,7 +31,7 @@ function createDreamTeam(members) {
       
      
     }
-    console.debug(arr);
+    //console.debug(arr);
   
     return arr.sort().join('');
    }  

@@ -12,21 +12,23 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function getSeason(date) {
-  // throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
   let season;
-  if (date[1] < 3 || date[1] > 11) {
+  let num = date.getMonth() + 1;
+  // console.debug(num);
+  // console.debug(date);
+  if (num < 3 || num > 11) {
     season = 'winter';
-  } else if (2 < date [1] < 6) {
+  } else if (2 < num && num < 6) {
     season = 'spring';
-  } else if (5 < date [1] < 9) {
+  } else if (5 < num && num < 9) {
     season = 'summer';
-  } else if (8 < date [1] < 12) {
-    season = 'fall';
+  } else if (8 < num && num < 12) {
+    season = 'autumn';
   } else {
     season = 'Invalid date!';
   }
-
+  console.debug(date);
+  console.debug(season);
   return season;
 }
 

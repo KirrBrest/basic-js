@@ -14,20 +14,33 @@ const { NotImplementedError } = require('../extensions/index.js');
 function getSeason(date) {
   let season;
   let num = date.getMonth() + 1;
+  const check = (date instanceof Date) && !isNaN(date);
   // console.debug(num);
   // console.debug(date);
-  if (num < 3 || num > 11) {
-    season = 'winter';
-  } else if (2 < num && num < 6) {
-    season = 'spring';
-  } else if (5 < num && num < 9) {
-    season = 'summer';
-  } else if (8 < num && num < 12) {
-    season = 'autumn';
+  // function valid(d) {
+  //   return !isNaN(Date.parse(date));
+  // }
+  if (check) {
+    if (num < 3 || num > 11) {
+      season = 'winter';
+    } else if (2 < num && num < 6) {
+      season = 'spring';
+    } else if (5 < num && num < 9) {
+      season = 'summer';
+    } else if (8 < num && num < 12) {
+      season = 'autumn';
+    } else if (!date) {
+      season = 'Invalid date!';
+    } else {
+      season = 'Invalid date!';
+    }
   } else {
     season = 'Invalid date!';
   }
+  
   console.debug(date);
+  
+  console.debug(check);
   console.debug(season);
   return season;
 }

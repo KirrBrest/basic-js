@@ -38,10 +38,10 @@ function getSeason(date) {
     season = 'Invalid date!';
   }
   
-  console.debug(date);
+  // console.debug(date);
   
-  console.debug(check);
-  console.debug(season);
+  // console.debug(check);
+  // console.debug(season);
   return season;
 }
 

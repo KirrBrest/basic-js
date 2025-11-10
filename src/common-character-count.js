@@ -1,4 +1,4 @@
-const { NotImplementedError } = require('../extensions/index.js');
+const { NotImplementedError } = require('../lib');
 
 /**
  * Given two strings, find the number of common characters between them.
@@ -11,27 +11,25 @@ const { NotImplementedError } = require('../extensions/index.js');
  * For s1 = "aabcc" and s2 = "adcaa", the output should be 3
  * Strings have 3 common characters - 2 "a"s and 1 "c".
  */
-function getCommonCharacterCount(s1, s2) {
-  console.debug(s1);
-  console.debug(s2);
-  let result = 0;
-  let arr1 = s1.split('');
-  let arr2 = s2.split('');
 
-  for (let i = 0; i <= arr1.length; i++) {
-    for (let j = 0; j <= arr2.length; j++) {
-      if (arr1[i] === arr2[j]) {
-        delete arr2[j];
-        result++;
-        arrs();
-      } 
-      console.debug(arr1);
-      console.debug(arr2);
+function getCommonCharacterCount(s1, s2) {
+  const freq = new Map();
+
+  for (const ch of s1) {
+    freq.set(ch, (freq.get(ch) || 0) + 1);
+  }
+
+  let result = 0;
+
+  for (const ch of s2) {
+    const count = freq.get(ch) || 0;
+
+    if (count > 0) {
+      freq.set(ch, count - 1);
+      result += 1;
     }
   }
 
-  
-  console.debug(result);
   return result;
 }
 

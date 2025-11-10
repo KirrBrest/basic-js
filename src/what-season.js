@@ -12,27 +12,35 @@ const { NotImplementedError } = require('../lib');
  *
  */
 function getSeason(date) {
-  let season;
-  let num = date.getMonth() + 1;
-  const check = (date instanceof Date) && !isNaN(date);
-  if (check) {
-    if (num < 3 || num > 11) {
-      season = 'winter';
-    } else if (2 < num && num < 6) {
-      season = 'spring';
-    } else if (5 < num && num < 9) {
-      season = 'summer';
-    } else if (8 < num && num < 12) {
-      season = 'autumn';
-    } else if (!date) {
-      season = 'Invalid date!';
-    } else {
-      season = 'Invalid date!';
-    }
-  } else {
-    season = 'Invalid date!';
+  if (date === undefined) {
+    return 'Unable to determine the time of year!';
   }
-  return season;
+
+  if (!(date instanceof Date) || Object.getOwnPropertyNames(date).length > 0) {
+    return 'Invalid date!';
+  }
+
+  const time = date.getTime();
+
+  if (Number.isNaN(time)) {
+    return 'Invalid date!';
+  }
+
+  const month = date.getMonth();
+
+  if (month === 11 || month <= 1) {
+    return 'winter';
+  }
+
+  if (month >= 2 && month <= 4) {
+    return 'spring';
+  }
+
+  if (month >= 5 && month <= 7) {
+    return 'summer';
+  }
+
+  return 'autumn';
 }
 
 module.exports = {

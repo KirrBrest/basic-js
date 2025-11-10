@@ -17,9 +17,6 @@ function getCommonCharacterCount(s1, s2) {
   let result = 0;
   let arr1 = s1.split('');
   let arr2 = s2.split('');
-  // for (let i = 0; i <= arr1.length; i++) {
-  //   let arr2 = s2.split('').map((symbol) => symbol == arr1[i] ? result++ : result);
-  // }
 
   for (let i = 0; i <= arr1.length; i++) {
     for (let j = 0; j <= arr2.length; j++) {
